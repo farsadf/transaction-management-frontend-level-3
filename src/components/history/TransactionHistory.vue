@@ -6,6 +6,7 @@
         :accountId="item.account_id"
         :amount="item.amount"
         :createdAt="item.created_at"
+        :key="item.transaction_id"
       />
     </div>
   </div>
@@ -15,7 +16,11 @@
 import TransactionItem from "./TransactionItem.vue";
 export default {
   components: { TransactionItem },
-  props: [items],
+  props: {
+    items: {
+      type: Array,
+    },
+  },
 };
 </script>
 
