@@ -14,7 +14,9 @@ describe("testing form", () => {
     cy.get("[data-type=account-id]").type(
       "0afd02d3-6c59-46e7-b7bc-893c5e0b7ac2"
     );
-    cy.get("[data-type=amount]").type(522);
+
+    cy.get("[data-type=amount]").type(968);
+    cy.get("[data-type=transaction-submit]").click();
     cy.get(
       "[data-type=transaction][data-account-id=0afd02d3-6c59-46e7-b7bc-893c5e0b7ac2][data-amount=522]"
     );
