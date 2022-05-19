@@ -20,9 +20,7 @@
 <script>
 export default {
   data() {
-    return {
-      balance: "",
-    };
+    return {};
   },
   props: {
     id: {
@@ -36,6 +34,9 @@ export default {
     },
     createdAt: {
       type: String,
+    },
+    balance: {
+      type: Number,
     },
   },
   mounted() {
