@@ -1,6 +1,12 @@
 <template>
   <div>
-    <div class="transaction-item my-5 p-5 border-2 border-gray-300 text-left">
+    <div
+      data-type="transaction"
+      :data-account-id="{ accountId }"
+      :data-amount="amount"
+      :data-balance="amount"
+      class="transaction-item my-5 p-5 border-2 border-gray-300 text-left"
+    >
       Transferred {{ amount }}$ to account {{ id }}
       at
       <span class="text-right">
