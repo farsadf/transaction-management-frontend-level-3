@@ -4,7 +4,6 @@
   >
     <div v-for="item in items">
       <TransactionItem
-        :balance="balance"
         :id="item.transaction_id"
         :accountId="item.account_id"
         :amount="item.amount"

@@ -2,14 +2,15 @@
   <div>
     <div
       data-type="transaction"
-      :data-account-id="{ accountId }"
+      :data-account-id="accountId"
       :data-amount="amount"
       :data-balance="balance"
-      class="transaction-item my-5 p-5 border-2 border-gray-300 text-left"
+      class="transaction-item my-5 p-5 border-2 text-black border-gray-300 text-left"
     >
-      Transferred {{ amount }}$ to account {{ id }}
+      Transferred <span class="text-gray-500">{{ amount }}</span
+      >$ to account <span class="text-gray-500"> {{ accountId }}</span>
       at
-      <span class="text-right">
+      <span class="text-right text-gray-700">
         {{ createdAt }}
       </span>
     </div>
