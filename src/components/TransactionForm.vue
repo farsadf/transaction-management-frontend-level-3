@@ -38,7 +38,6 @@ export default {
       amount: "",
       accountId: "",
       err: "",
-      balance: "",
     };
   },
   methods: {
@@ -48,7 +47,8 @@ export default {
         amount: this.amount,
       };
       if (
-        this.accountId === "0afd02d3-6c59-46e7-b7bc-893c5e0b7ac2" &&
+        this.accountId.length ===
+          "0afd02d3-6c59-46e7-b7bc-893c5e0b7ac2".length &&
         typeof +this.amount === "number"
       ) {
         fetch("https://infra.devskills.app/api/accounting/transactions", {
