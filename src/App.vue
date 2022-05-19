@@ -1,7 +1,7 @@
 <template>
   <div class="container w-screen flex">
     <TransactionForm />
-    <TransactionHistory v-if="!err" :items="items" />
+    <TransactionHistory v-if="items !== []" :items="items" />
     <div class="err" v-else>
       sorry transaction history is not available right now
     </div>
@@ -21,7 +21,7 @@ export default {
   },
   mounted() {
     fetch("https://infra.devskills.app/api/accounting/transactions")
-      .then((res) => res.json)
+      .then((res) => res.json())
       .then((data) => (this.items = data))
       .catch((err) => {
         console.log(err);
