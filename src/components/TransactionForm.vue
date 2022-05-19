@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-3/12 border-r-2 border-gray-900 min-h-screen flex items-center justify-center"
+    class="w-3/12 border-r-2 border-gray-900 min-h-screen flex items-center justify-center m-0"
   >
     <form
       @submit.prevent=""

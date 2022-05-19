@@ -1,5 +1,7 @@
 <template>
-  <div class="transaction-list">
+  <div
+    class="transaction-list flex w-8/12 flex-col max-auto flex-1 m-0 justify-center"
+  >
     <div v-for="item in items">
       <TransactionItem
         :id="item.transaction_id"
