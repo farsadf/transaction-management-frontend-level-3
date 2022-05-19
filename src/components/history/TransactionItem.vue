@@ -39,13 +39,6 @@ export default {
       type: Number,
     },
   },
-  mounted() {
-    fetch(
-      `https://infra.devskills.app/api/accounting/accounts/${this.accountId}`
-    )
-      .then((res) => res.json())
-      .then((data) => (this.balance = data.balance));
-  },
 };
 </script>
 

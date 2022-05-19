@@ -53,7 +53,7 @@ export default {
           this.transactions.unshift(data);
           fetch(
             "https://infra.devskills.app/api/accounting/accounts/" +
-              this.transactions[0].account_id
+              data.account_id
           )
             .then((res) => res.json())
             .then((data) => (this.transactions[0].balance = data.balance));
