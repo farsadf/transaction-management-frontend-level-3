@@ -27,14 +27,19 @@ export default {
     fetch("https://infra.devskills.app/api/accounting/transactions")
       .then((res) => res.json())
       .then((data) => {
+      
         this.transactions = data.sort((a, b) => {
           a.created_At - b.created_At;
         });
-      })
+        fetch("https://infra.devskills.app/api/accounting/accounts/"+ this.transactions[0].account_id).then(res=> res.json()).then(data=>this.transactions[0].balance = data.balance)
+      }
+      
+      )
       .catch((err) => {
         console.log(err);
         this.err = true;
       });
+    
   },
   methods: {
     addNewTransaction(data) {
