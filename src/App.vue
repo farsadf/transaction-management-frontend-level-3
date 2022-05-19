@@ -1,7 +1,12 @@
 <template>
-	<div class="container"></div>
+  <div class="container w-screen flex">
+    <TransactionForm />
+  </div>
 </template>
 
 <script>
-export default {};
+import TransactionForm from "./components/TransactionForm.vue";
+export default {
+  components: { TransactionForm },
+};
 </script>
