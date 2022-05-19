@@ -1,5 +1,5 @@
 <template>
-  <div class="container w-screen flex">
+  <div class="container w-screen flex lg:flex-row flex-col">
     <TransactionForm />
     <TransactionHistory v-if="items !== []" :items="items" />
     <div class="err" v-else>
