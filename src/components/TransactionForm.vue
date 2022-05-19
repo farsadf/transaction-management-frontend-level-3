@@ -1,10 +1,10 @@
 <template>
   <div
-    class="w-3/12 border-r-2 border-gray-900 min-h-screen flex items-center justify-center m-0"
+    class="w-4/12 border-r-2 border-gray-900 min-h-screen flex justify-center m-0"
   >
     <form
       @submit.prevent=""
-      class="flex flex-col border-gray-100 border-2 p-5 w-11/12 h-96 justify-between items-center"
+      class="flex flex-col lg:mt-52 border-gray-100 border-2 p-5 w-11/12 h-96 justify-between items-center"
     >
       <label class="self-start" for="id-input">Account Id:</label>
       <input

@@ -1,8 +1,8 @@
 <template>
-  <div
-    class="transaction-item border-2 w-full border-gray-400 h-10 text-center"
-  >
-    Transferred {{ amount }}$ to account {{ id }}
+  <div>
+    <div class="transaction-item p-5 border-2 border-gray-300 text-left">
+      Transferred {{ amount }}$ to account {{ id }}
+    </div>
   </div>
 </template>
 
