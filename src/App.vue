@@ -10,8 +10,9 @@
 
 <script>
 import TransactionForm from "./components/TransactionForm.vue";
+import TransactionHistory from "./components/history/TransactionHistory.vue";
 export default {
-  components: { TransactionForm },
+  components: { TransactionForm, TransactionHistory },
   data() {
     return {
       items: [],
