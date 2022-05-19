@@ -1,6 +1,10 @@
 <template>
   <div class="container w-screen flex">
     <TransactionForm />
+    <TransactionHistory v-if="!err" :items="items" />
+    <div class="err" v-else>
+      sorry transaction history is not available right now
+    </div>
   </div>
 </template>
 
@@ -8,5 +12,20 @@
 import TransactionForm from "./components/TransactionForm.vue";
 export default {
   components: { TransactionForm },
+  data() {
+    return {
+      items: [],
+      err: false,
+    };
+  },
+  mounted() {
+    fetch("https://infra.devskills.app/api/accounting/transactions")
+      .then((res) => res.json)
+      .then((data) => (this.items = data))
+      .catch((err) => {
+        console.log(err);
+        this.err = true;
+      });
+  },
 };
 </script>
