@@ -1,7 +1,11 @@
 <template>
   <div class="container w-screen flex lg:flex-row flex-col">
     <TransactionForm @newTransaction="addNewTransaction" />
-    <TransactionHistory v-if="transactions !== []" :items="transactions" />
+    <TransactionHistory
+      :key="transactions.length"
+      v-if="transactions !== []"
+      :items="transactions"
+    />
     <div class="err" v-else>
       sorry transaction history is not available right now
     </div>
