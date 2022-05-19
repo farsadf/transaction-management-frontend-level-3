@@ -4,7 +4,7 @@
       data-type="transaction"
       :data-account-id="{ accountId }"
       :data-amount="amount"
-      :data-balance="amount"
+      :data-balance="balance"
       class="transaction-item my-5 p-5 border-2 border-gray-300 text-left"
     >
       Transferred {{ amount }}$ to account {{ id }}
@@ -18,6 +18,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      balance: "",
+    };
+  },
   props: {
     id: {
       type: String,
@@ -31,6 +36,13 @@ export default {
     createdAt: {
       type: String,
     },
+  },
+  mounted() {
+    fetch(
+      `https://infra.devskills.app/api/accounting/accounts/${this.accountId}`
+    )
+      .then((res) => res.json())
+      .then((data) => (this.balance = data.balance));
   },
 };
 </script>
