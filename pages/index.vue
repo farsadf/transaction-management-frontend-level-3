@@ -71,7 +71,7 @@ export default {
       e.preventDefault()
 
       this.$axios
-        .post('https://infra.devskills.app/api/accounting/transactions')
+        .post('https://infra.devskills.app/api/accounting/transactions', {})
         .then((res) => {})
         .catch((err) => {
           err && err.response && this.$errorReport.build(err.response.data)

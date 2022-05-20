@@ -6,6 +6,11 @@ class CustomErrorReport {
   build(allErrors) {
     if (allErrors.error) {
       this.toast.error(allErrors.error)
+    } else if (allErrors.errors) {
+      allErrors.errors.map((errorItem) => {
+        this.toast.error(errorItem)
+        return errorItem
+      })
     }
   }
 }
