@@ -23,7 +23,19 @@
             </div>
             <div class="t-transactions-list d-flex">
               <h3 class="t-section-title">Transaction history</h3>
-              <TransactionItem ref="transaction-list"></TransactionItem>
+              <div
+                class="w-100 d-flex justify-content-center"
+                v-if="loading.initial"
+              >
+                <b-spinner label="Loading..."></b-spinner>
+              </div>
+              <template v-else>
+                <TransactionItem
+                  v-for="transaction in transactions"
+                  :key="'transaction-' + transaction.transaction_id"
+                  :transaction="transaction"
+                ></TransactionItem>
+              </template>
             </div>
           </div>
         </b-col>
@@ -35,7 +47,26 @@
 <script>
 export default {
   name: 'IndexPage',
+  data() {
+    return {
+      loading: {
+        initial: true,
+      },
+      transactions: [],
+    }
+  },
+  mounted() {
+    this.getTransactionList()
+  },
   methods: {
+    async getTransactionList() {
+      await this.$axios
+        .get('https://infra.devskills.app/api/accounting/transactions')
+        .then((res) => {
+          this.transactions = res.data
+          this.loading.initial = false
+        })
+    },
     addTransaction(e) {
       e.preventDefault()
     },
