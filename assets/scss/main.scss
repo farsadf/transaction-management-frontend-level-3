@@ -1,0 +1,7 @@
+body{
+  background: red
+}
+
+@import "./components/transaction_item";
+
+@import "./pages/transactions";
