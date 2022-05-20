@@ -71,7 +71,21 @@ export default {
         .get('https://infra.devskills.app/api/accounting/transactions')
         .then((res) => {
           this.transactions = res.data
+          this.fetchFirstTransactionBalance(this.transactions[0].account_id)
+        })
+        .catch((err) => {
+          err && err.response && this.$errorReport.build(err.response.data)
+        })
+    },
+    async fetchFirstTransactionBalance(accountId) {
+      await this.$axios
+        .get(`https://infra.devskills.app/api/accounting/accounts/${accountId}`)
+        .then((res) => {
+          this.transactions[0].balance = res.data.balance
           this.loading.initial = false
+        })
+        .catch((err) => {
+          err && err.response && this.$errorReport.build(err.response.data)
         })
     },
     async addTransaction(e) {
@@ -89,6 +103,7 @@ export default {
         .then((res) => {
           this.newTransaction = {}
           this.transactions.unshift({ ...res.data, isNew: true })
+          this.fetchFirstTransactionBalance(res.data.account_id)
         })
         .catch((err) => {
           err && err.response && this.$errorReport.build(err.response.data)

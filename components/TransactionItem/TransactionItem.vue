@@ -11,7 +11,7 @@
       class="t-transaction-item__badge"
       >NEW</span
     >
-    <span v-text="customText"></span>
+    <span v-html="customText"></span>
   </div>
 </template>
 
