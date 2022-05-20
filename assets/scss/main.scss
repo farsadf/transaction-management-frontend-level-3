@@ -1,7 +1,8 @@
-body{
-  background: red
+body {
+  background: #f3f4f8;
 }
 
 @import "./components/transaction_item";
+@import "./components/section_title";
 
 @import "./pages/transactions";

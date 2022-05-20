@@ -1,0 +1,47 @@
+.t-app-wrapper {
+  height: 2000px;
+  gap: 60px;
+  padding-top: 50px;
+}
+.t-form {
+  position: sticky;
+  top: 20px;
+  flex: 0 0 360px;
+  gap: 20px;
+  flex-direction: column;
+}
+.t-form-content {
+  border-radius: 12px;
+
+  background: #fff;
+  padding: 2rem;
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .t-input {
+      flex-direction: column;
+      width: 100%;
+    }
+    input {
+      border: 1px solid #b3b3b3;
+      outline: none;
+      height: 44px;
+      border-radius: 12px;
+      padding: 0 1rem;
+      transition: all 0.3s;
+    }
+    input:not([type="submit"]):focus {
+      border-color: #333333;
+    }
+    input[type="submit"] {
+      background: #00c2f3;
+      border: none;
+    }
+  }
+}
+.t-transactions-list {
+  flex: 1;
+  flex-direction: column;
+  gap: 20px;
+}
