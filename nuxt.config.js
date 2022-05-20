@@ -17,7 +17,12 @@ export default {
   css: ['@/assets/scss/main.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    {
+      src: '~/plugins/custom-error-report.js',
+      mode: 'client',
+    },
+  ],
 
   components: [{ path: '~/components', pathPrefix: false }],
 

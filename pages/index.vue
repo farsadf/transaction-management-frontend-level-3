@@ -24,8 +24,8 @@
             <div class="t-transactions-list d-flex">
               <h3 class="t-section-title">Transaction history</h3>
               <div
-                class="w-100 d-flex justify-content-center"
                 v-if="loading.initial"
+                class="w-100 d-flex justify-content-center"
               >
                 <b-spinner label="Loading..."></b-spinner>
               </div>
@@ -69,6 +69,13 @@ export default {
     },
     addTransaction(e) {
       e.preventDefault()
+
+      this.$axios
+        .post('https://infra.devskills.app/api/accounting/transactions')
+        .then((res) => {})
+        .catch((err) => {
+          err && err.response && this.$errorReport.build(err.response.data)
+        })
     },
   },
 }
