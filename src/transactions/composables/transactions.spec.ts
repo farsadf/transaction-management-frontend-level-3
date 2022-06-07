@@ -45,12 +45,8 @@ describe("transactions composable", () => {
   });
 
   test("load transactions", () => {
-    const {
-      errorMessage,
-      isLoading,
-      retry: loadTransactions,
-      transactions,
-    } = initialize();
+    const { errorMessage, isLoading, loadTransactions, transactions } =
+      initialize();
 
     const testTransactions: Transaction[] = [
       {
@@ -93,12 +89,8 @@ describe("transactions composable", () => {
   });
 
   test("show error on loading transactions", () => {
-    const {
-      errorMessage,
-      isLoading,
-      retry: loadTransactions,
-      transactions,
-    } = initialize();
+    const { errorMessage, isLoading, loadTransactions, transactions } =
+      initialize();
 
     const error = "error loading transactions";
 

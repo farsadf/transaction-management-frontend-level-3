@@ -4,8 +4,13 @@ import TransactionsList from "./components/TransactionsList.vue";
 
 import useTransactions from "./composables/transactions";
 
-const { transactions, isLoading, retry, errorMessage, addTransaction } =
-  useTransactions();
+const {
+  transactions,
+  isLoading,
+  loadTransactions,
+  errorMessage,
+  addTransaction,
+} = useTransactions();
 </script>
 
 <template>
@@ -19,7 +24,7 @@ const { transactions, isLoading, retry, errorMessage, addTransaction } =
       :transactions="transactions"
       :isLoading="isLoading"
       :error-message="errorMessage"
-      :retry="retry"
+      :retry="loadTransactions"
     />
   </div>
 </template>

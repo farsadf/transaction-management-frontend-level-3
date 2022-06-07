@@ -36,7 +36,7 @@ const useTransactions = () => {
     isLoading,
     errorMessage,
 
-    retry: loadTransactions,
+    loadTransactions,
     addTransaction,
   };
 };
