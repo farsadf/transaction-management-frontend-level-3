@@ -1,38 +1,16 @@
-import { computed, ref, watch } from "vue";
+import { computed } from "vue";
 
-import { getAccount } from "../apis";
-
-import { formatCurrency } from "../../utils";
+import { formatCurrency } from "../utils";
 
 import type { Transaction } from "../types";
 
 const useTransactionsListItem = ({
   transaction,
-  showBalance,
+  balance,
 }: {
   transaction: Transaction;
-  showBalance: boolean;
+  balance?: number;
 }) => {
-  const balance = ref<number | null>(null);
-  const isLoadingBalance = ref<boolean>(false);
-  const errorMessage = ref<string | null>(null);
-
-  const loadAccountBalance = () => {
-    isLoadingBalance.value = true;
-
-    getAccount(transaction.account_id)
-      .then((result) => {
-        errorMessage.value = null;
-        balance.value = result.balance;
-      })
-      .catch((error: Error) => {
-        errorMessage.value = error.message;
-      })
-      .finally(() => {
-        isLoadingBalance.value = false;
-      });
-  };
-
   const transactionDirection = computed(() => {
     if (transaction.amount > 0) {
       return "to";
@@ -41,17 +19,9 @@ const useTransactionsListItem = ({
     return "from";
   });
 
-  watch(
-    () => showBalance,
-    (show) => {
-      if (show && balance.value === null) {
-        loadAccountBalance();
-      }
-    },
-    { immediate: true }
-  );
-
-  const formattedBalance = computed(() => formatCurrency(balance.value || 0));
+  const formattedBalance = computed(() => {
+    return balance ? formatCurrency(balance) : "";
+  });
 
   const transactionText = computed(() => {
     const amount = formatCurrency(Math.abs(transaction.amount));
@@ -60,13 +30,9 @@ const useTransactionsListItem = ({
   });
 
   return {
-    balance: formattedBalance,
     rawBalance: balance,
-    isLoadingBalance,
-    errorMessage,
     transactionText,
-
-    retry: loadAccountBalance,
+    balance: formattedBalance,
   };
 };
 

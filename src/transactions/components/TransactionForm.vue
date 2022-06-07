@@ -38,8 +38,7 @@ const { submitTransaction, isSubmitting, errorMessage } = useTrasactionForm(
         name="amount"
         id="amount"
         class="mb-4 border"
-        type="text"
-        pattern="[^0]\d+"
+        type="number"
         required
         :disabled="isSubmitting"
       />

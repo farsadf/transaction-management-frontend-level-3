@@ -6,8 +6,3 @@ export type Transaction = {
 };
 
 export type TransactionDTO = Omit<Transaction, "transaction_id" | "created_at">;
-
-export type Account = {
-  account_id: string;
-  balance: number;
-};

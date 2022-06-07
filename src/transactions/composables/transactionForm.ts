@@ -12,6 +12,7 @@ const useTransactionForm = (
 
   const submitTransaction = (event: Event) => {
     isSubmitting.value = true;
+    errorMessage.value = "";
 
     const form = event.target as HTMLFormElement;
 
@@ -19,6 +20,12 @@ const useTransactionForm = (
       amount: parseInt(form.amount.value, 10),
       account_id: form.accountId.value,
     };
+
+    if (transaction.amount === 0) {
+      errorMessage.value = "Amount must be greater than 0";
+      isSubmitting.value = false;
+      return;
+    }
 
     sendTransaction(transaction)
       .then((result) => {

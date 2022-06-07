@@ -5,19 +5,12 @@ import type { Transaction } from "../types";
 
 type IProps = {
   transaction: Transaction;
-  showBalance: boolean;
+  balance?: number;
 };
 
 const props = defineProps<IProps>();
 
-const {
-  balance,
-  errorMessage,
-  isLoadingBalance,
-  retry,
-  transactionText,
-  rawBalance,
-} = useTransactionsListItem(props);
+const { transactionText, balance, rawBalance } = useTransactionsListItem(props);
 </script>
 
 <template>
@@ -32,15 +25,6 @@ const {
       {{ transactionText }}
     </span>
 
-    <template v-if="showBalance">
-      <span v-if="isLoadingBalance">Loading balance...</span>
-
-      <span class="text-red-800" v-else-if="errorMessage">
-        {{ errorMessage }}
-        <span class="cursor-pointer text-red-400" @click="retry">Retry</span>
-      </span>
-
-      <span v-else>the current account balance {{ balance }}</span>
-    </template>
+    <span v-if="balance">the current account balance {{ balance }}</span>
   </div>
 </template>

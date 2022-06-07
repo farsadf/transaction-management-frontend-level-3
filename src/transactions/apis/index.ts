@@ -1,6 +1,6 @@
 import api from "../../api";
 
-import type { Account, Transaction, TransactionDTO } from "../types";
+import type { Transaction, TransactionDTO } from "../types";
 
 const getTransactions = async () => {
   const { data: transactions } = await api.get<Transaction[]>(
@@ -19,12 +19,4 @@ const sendTransaction = async (transactionDTO: TransactionDTO) => {
   return transaction;
 };
 
-const getAccount = async (accountId: string) => {
-  const { data: account } = await api.get<Account>(
-    `/api/accounting/accounts/${accountId}`
-  );
-
-  return account;
-};
-
-export { getTransactions, sendTransaction, getAccount };
+export { getTransactions, sendTransaction };

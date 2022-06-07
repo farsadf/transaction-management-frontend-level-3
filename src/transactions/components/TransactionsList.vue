@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import TransactionsListItem from "./TransactionsListItem.vue";
 
+import { calculateBalance } from "../utils";
+
 import type { Transaction } from "../types";
 
 type IProps = {
@@ -29,7 +31,11 @@ defineProps<IProps>();
         v-for="(transaction, index) in transactions"
         :key="transaction.transaction_id"
         :transaction="transaction"
-        :show-balance="index === 0"
+        :balance="
+          index === 0
+            ? calculateBalance(transactions, transaction.account_id)
+            : undefined
+        "
       />
     </div>
   </div>
