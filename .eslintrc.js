@@ -27,6 +27,7 @@ module.exports = {
     "import/prefer-default-export": "off",
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": ["error"],
+    "import/no-extraneous-dependencies": "off",
   },
   settings: {
     "import/resolver": {
