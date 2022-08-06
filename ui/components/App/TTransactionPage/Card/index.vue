@@ -2,9 +2,9 @@
   <div
     class="card-box pa-3 mb-4"
     data-type="transaction"
-    data-account-id="${transaction-account-id}"
-    data-amount="${transaction-amount}"
-    data-balance="${current-account-balance}"
+    :data-account-id="transaction.account_id"
+    :data-amount="transaction.amount"
+    :data-balance="balance"
   >
     Transferred ${{ transaction.amount > 0 ? transaction.amount : -1 * transaction.amount }}
     <span :class="[transaction.amount > 0 ? 'from' : 'to']">
