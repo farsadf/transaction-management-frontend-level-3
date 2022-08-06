@@ -3,6 +3,9 @@
     <v-row>
       <v-col cols="4" class="pa-3">
         <div class="box pa-3">
+          <h2 class="pb-5">
+            Submit new transaction
+          </h2>
           <form>
             <v-text-field
               v-model="form.account_id"
@@ -36,6 +39,9 @@
         <div class="box pa-3">
           <TLoading v-if="loading" />
           <div v-else>
+            <h2 class="pb-5">
+              Transaction history
+            </h2>
             <TransactionCard
               v-for="(transaction , index) in transactionsList"
               :key="index"
