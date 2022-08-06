@@ -24,7 +24,10 @@
       </v-col>
       <v-col cols="8" class="pa-3">
         <div class="box pa-3">
-          asd
+          <TLoading v-if="loading" />
+          <div v-else>
+            ads
+          </div>
         </div>
       </v-col>
     </v-row>
