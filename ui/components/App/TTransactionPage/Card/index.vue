@@ -29,11 +29,11 @@ export default {
       type: Number,
       required: true,
       default: 0
-    }
-  },
-  computed: {
-    balance () {
-      return this.$store.getters['transaction/getBalance']
+    },
+    balance: {
+      type: Number,
+      required: true,
+      default: 0
     }
   }
 }

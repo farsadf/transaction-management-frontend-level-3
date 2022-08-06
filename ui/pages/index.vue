@@ -47,6 +47,7 @@
               :key="index"
               :transaction="transaction"
               :index="index"
+              :balance="balance"
             />
           </div>
         </div>
@@ -66,6 +67,7 @@ export default {
   },
   data () {
     return {
+      balance: 0,
       form: {
         account_id: '',
         amount: ''
@@ -95,12 +97,21 @@ export default {
       this.loading = true
       this.fetchTransactionsList().then(() => {
         this.loading = false
+        this.getBalance()
       })
+    },
+    getBalance () {
+      console.log(this.transactionsList)
+      if (this.transactionsList.length > 0) {
+        this.$axios.$get(`/api/accounting/accounts/${this.transactionsList[0].account_id}`).then(({ balance }) => {
+          this.balance = balance
+        })
+      }
     },
     submit () {
       this.btnLoading = true
       this.createTransaction(this.form).then(() => {
-        this.fetchTransactionsList()
+        this.fetchTransactions()
         this.form = {
           account_id: '',
           amount: ''
