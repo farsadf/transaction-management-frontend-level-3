@@ -56,7 +56,7 @@ export default {
     }),
     submit () {
       this.loading = true
-      this.fetchTransactionsList(this.form).finally(() => {
+      this.fetchTransactionsList().finally(() => {
         this.loading = false
       })
     }
