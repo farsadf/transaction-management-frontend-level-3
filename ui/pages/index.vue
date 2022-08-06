@@ -6,7 +6,6 @@
           <form>
             <v-text-field
               v-model="form.account_id"
-              :error-messages="accountIdError"
               data-type="account-id"
               label="Account ID"
               outlined
@@ -19,7 +18,6 @@
               outlined
             />
             <v-btn
-              type="submit"
               width="80%"
               class="text-center d-block mx-auto"
               depressed
@@ -27,7 +25,6 @@
               data-type="transaction-submit"
               color="success"
               :loading="btnLoading"
-              :disabled="!!numberError || !!accountIdError"
               @click.prevent="submit "
             >
               submit
@@ -65,7 +62,7 @@ export default {
     return {
       form: {
         account_id: '',
-        amount: 0
+        amount: ''
       },
       loading: false,
       btnLoading: false
@@ -76,10 +73,7 @@ export default {
       transactionsList: 'transaction/getTransactionsList'
     }),
     numberError () {
-      return Number(this.form.amount).toString() === this.form.amount.toString() ? '' : 'Enter correct number'
-    },
-    accountIdError () {
-      return this.form.account_id.length === 0 ? 'Invalid Account ID ' : ''
+      return this.form.amount === '' || Number(this.form.amount).toString() === this.form.amount ? '' : 'Enter correct number'
     }
   },
 
@@ -103,7 +97,7 @@ export default {
         this.fetchTransactionsList()
         this.form = {
           account_id: '',
-          amount: 0
+          amount: ''
         }
       }).finally(() => {
         this.btnLoading = false

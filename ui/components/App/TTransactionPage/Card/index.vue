@@ -6,13 +6,13 @@
     data-amount="${transaction-amount}"
     data-balance="${current-account-balance}"
   >
-    <p>
-      Transferred ${{ transaction.amount > 0 ? transaction.amount : -1 * transaction.amount }}
-      {{ transaction.amount > 0 ? 'from' : 'to' }} account {{ transaction.account_id }}
-    </p>
-    <p v-if="index===0">
-      The current account balance {{ balance }}
-    </p>
+    Transferred ${{ transaction.amount > 0 ? transaction.amount : -1 * transaction.amount }}
+    <span :class="[transaction.amount > 0 ? 'from' : 'to']">
+      {{ transaction.amount > 0 ? 'from' : 'to' }}
+    </span>
+    account {{ transaction.account_id }}
+    <br>
+    {{ index===0 ?'The current account balance $'+ balance :'' }}
   </div>
 </template>
 
@@ -43,5 +43,11 @@ export default {
 .card-box {
   border-radius: 8px;
   box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+  .from{
+    color: #3cff4b;
+  }
+  .to{
+    color: #ffa91d;
+  }
 }
 </style>
