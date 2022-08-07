@@ -37,8 +37,8 @@
       </v-col>
       <v-col cols="8" class="pa-3">
         <div class="box pa-3">
-          <TLoading v-if="loading" />
-          <div v-else>
+          <!--          <TLoading v-if="loading" />-->
+          <div>
             <h2 class="pb-5">
               Transaction history
             </h2>
@@ -101,7 +101,6 @@ export default {
       })
     },
     getBalance () {
-      console.log(this.transactionsList)
       if (this.transactionsList.length > 0) {
         this.$axios.$get(`/api/accounting/accounts/${this.transactionsList[0].account_id}`).then(({ balance }) => {
           this.balance = balance
@@ -110,15 +109,16 @@ export default {
     },
     submit () {
       this.btnLoading = true
-      this.createTransaction(this.form).then(() => {
-        this.fetchTransactions()
-        this.form = {
-          account_id: '',
-          amount: ''
-        }
+      this.createTransaction({ ...this.form }).then(() => {
+        this.$store.commit('transaction/addTra', { ...this.form })
+        this.getBalance()
       }).finally(() => {
         this.btnLoading = false
       })
+      this.form = {
+        account_id: '',
+        amount: ''
+      }
     }
   }
 }

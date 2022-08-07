@@ -5,9 +5,11 @@ export default function ({ $axios, app, store }) {
     },
     (error) => {
       if (error.response) {
-        error.response.data.errors.forEach((message) => {
-          alert(message)
-        })
+        if (Array.isArray(error.response.data.errors)) {
+          error.response.data.errors.forEach((message) => {
+            alert(message)
+          })
+        }
       }
     })
 }
