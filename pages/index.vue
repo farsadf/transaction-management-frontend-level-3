@@ -112,13 +112,15 @@ export default {
       this.createTransaction({ ...this.form }).then(() => {
         this.$store.commit('transaction/addTra', { ...this.form })
         this.getBalance()
+      }).catch((e) => {
+        e.response.data.errors.forEach(item => alert(item))
       }).finally(() => {
         this.btnLoading = false
+        this.form = {
+          account_id: '',
+          amount: ''
+        }
       })
-      this.form = {
-        account_id: '',
-        amount: ''
-      }
     }
   }
 }
